@@ -8,12 +8,12 @@ TEST_FILE_LOCAL = './tests/local_sample.txt'
 TEST_CONTENT = 'Hello, HDFS!'
 DOWNLOAD_PATH = 'tests/'
 
-@pytest.fixture(scope="module", autouse=True)
+# @pytest.fixture(scope="module", autouse=True)
 def setup_and_cleanup():
     hdfs_repository.delete(TEST_FILE_HDFS)
     hdfs_repository.delete(TEST_DIR)
 
-    yield
+    # yield
 
 
 def test_create_directory():
@@ -82,6 +82,7 @@ def test_write_path():
 # Add a main block to execute test functions
 if __name__ == "__main__":
     # Run each test manually
+    setup_and_cleanup()
     test_create_directory()
     test_upload_file()
     test_download_file()
